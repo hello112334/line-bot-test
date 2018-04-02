@@ -58,11 +58,8 @@ def handle_message(event):
         r = requests.get('https://book.douban.com/subject/1084336/comments/')
         soup = BeautifulSoup(r.text, 'lxml') 
         pattern = soup.find_all('p', 'comment-content')
-        for item in pattern:
-            line_bot_api.reply_message(event.reply_token, 
-            TextSendMessage(item.string + '\n---------------------------------'))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(pattern))
         
-         
         #extSendMessage('https://icook.tw/recipes/search?q=' + text + '&ingredients=')
         
     
