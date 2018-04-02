@@ -54,10 +54,10 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, 
         TextSendMessage(text='Hi, mate'))  
     else:
-        #r = requests.get('https://book.douban.com/subject/1084336/comments/')
-        #soup = BeautifulSoup(r.text, 'lxml') 
-        #pattern = soup.find_all('p', 'comment-content')
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text))     
+        r = requests.get('https://book.douban.com/subject/1084336/comments/')
+        soup = BeautifulSoup(r.text, 'lxml') 
+        pattern = soup.find_all('p', 'comment-content')
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(pattern))     
         #extSendMessage('https://icook.tw/recipes/search?q=' + text + '&ingredients=')
         
     
