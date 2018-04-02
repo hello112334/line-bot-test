@@ -67,9 +67,8 @@ def handle_message(event):
          
         #extSendMessage('https://icook.tw/recipes/search?q=' + text + '&ingredients=')
     else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text)) 
-        line_bot_api.reply_message(event.reply_token, TextSendMessage('hehe')) 
-    
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text + '\n hehe')) 
+        
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
