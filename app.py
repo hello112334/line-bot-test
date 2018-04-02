@@ -62,12 +62,13 @@ def handle_message(event):
             listA.append(item.string)
             
         for name in listA:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(name)) 
+            line_bot_api.reply_message(event.reply_token, 
+                                       TextSendMessage(name + '----------')) 
             
          
         #extSendMessage('https://icook.tw/recipes/search?q=' + text + '&ingredients=')
     else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text + '\n hehe')) 
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text + '\nhehe')) 
         
 import os
 if __name__ == "__main__":
