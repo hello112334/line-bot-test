@@ -60,9 +60,10 @@ def handle_message(event):
         listA = []      
         for item in pattern:
             listA.append(item.string)  
-                  
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(listA)) 
-        #extSendMessage('https://icook.tw/recipes/search?q=' + text + '&ingredients=')    
+        for name in listA:    
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(name))
+
+        #TextSendMessage('https://icook.tw/recipes/search?q=' + text + '&ingredients=')    
     else:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text + '\n學你說話XD'))
         
