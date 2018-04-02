@@ -57,13 +57,14 @@ def handle_message(event):
         r = requests.get('https://book.douban.com/subject/1084336/comments/')
         soup = BeautifulSoup(r.text, 'lxml') 
         pattern = soup.find_all('p', 'comment-content')
-        listA = []
+        listA = []      
         for item in pattern:
-            listA.append((item.string) + '\n----------')        
+            listA.append(item.string)  
+                  
         line_bot_api.reply_message(event.reply_token, TextSendMessage(listA)) 
         #extSendMessage('https://icook.tw/recipes/search?q=' + text + '&ingredients=')    
     else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text + '學你說話XD'))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text + '\n學你說話XD'))
         
 import os
 if __name__ == "__main__":
