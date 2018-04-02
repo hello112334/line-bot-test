@@ -12,8 +12,7 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage, ImageSendMessage
 )
 
-import requests
-from bs4 import BeautifulSoup   
+  
 
 app = Flask(__name__)
 
@@ -49,17 +48,15 @@ def handle_message(event):
     text = event.message.text   
     #recipeWeb = 'https://icook.tw/recipes/search?q=' + text + '&ingredients='
     #r = requests.get(recipeWeb)  
-    
-      
+     
     if text == 'Hi':
         line_bot_api.reply_message(event.reply_token, 
         TextSendMessage(text='Hi, mate'))  
     else:
-        r = requests.get('https://book.douban.com/subject/1084336/comments/')
-        soup = BeautifulSoup(r.text, 'lxml') 
-        pattern = soup.find_all('p', 'comment-content')
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(pattern))
-        
+        #r = requests.get('https://book.douban.com/subject/1084336/comments/')
+        #soup = BeautifulSoup(r.text, 'lxml') 
+        #pattern = soup.find_all('p', 'comment-content')
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text))     
         #extSendMessage('https://icook.tw/recipes/search?q=' + text + '&ingredients=')
         
     
