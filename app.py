@@ -43,9 +43,9 @@ def handle_message(event):
     text = event.message.text
     if text == 'Hi':
         line_bot_api.reply_message(event.reply_token, 
-        TextSendMessage(text='Hi'))  
+        TextSendMessage(text='Hi, mate'))  
     else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text='Hello World!'))  
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text))  
      
        
 import os
