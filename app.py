@@ -10,12 +10,16 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage, ImageSendMessage
 )
 
+import requests
+from bs4 import BeautifulSoup
+
 app = Flask(__name__)
 
 # Channel Access Token
 line_bot_api = LineBotApi('AzH87TcvfQKLWSRFu2ziKsU10gIyDwK5TeMlgmnzoF+M3WAW1Jdtvmjq/BlF4wqlYNicqEJ3QzmReL7EQ5/dbxlNNROsVLMNMAZ6yJquRVTTNEG2msiups++EZJmHrjj2cPYsIs2O2tpiCFykonofgdB04t89/1O/w1cDnyilFU=')
 # Channel Secret
 handler = WebhookHandler('d4ad2ad65af463cd625172cb419f50e0')
+
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
@@ -41,11 +45,14 @@ def handle_message(event):
     #message = TextSendMessage(text=event.message.text)
     #line_bot_api.reply_message(event.reply_token, message)
     text = event.message.text
+    recipeWeb = 'https://icook.tw/recipes/search?q=' + text + '&ingredients='
+    recipe = requests.get(recipeWeb) 
+    
     if text == 'Hi':
         line_bot_api.reply_message(event.reply_token, 
         TextSendMessage(text='Hi, mate'))  
     else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text))  
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(recipeWeb))  
      
        
 import os
