@@ -12,6 +12,8 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage, ImageSendMessage
 )
 
+from bs4 import BeautifulSoup
+
 app = Flask(__name__)
 
 # Channel Access Token
