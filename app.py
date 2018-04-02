@@ -10,9 +10,6 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage, ImageSendMessage
 )
 
-import requests
-from bs4 import BeautifulSoup
-
 app = Flask(__name__)
 
 # Channel Access Token
@@ -58,6 +55,9 @@ def handle_message(event):
      
        
 import os
+import requests
+from bs4 import BeautifulSoup
+
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
