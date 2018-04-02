@@ -42,14 +42,14 @@ def handle_message(event):
     #message = TextSendMessage(text=event.message.text)
     #line_bot_api.reply_message(event.reply_token, message)
     text = event.message.text   
-    recipeWeb = 'https://icook.tw/recipes/search?q=' + text + '&ingredients='
+    #recipeWeb = 'https://icook.tw/recipes/search?q=' + text + '&ingredients='
     #r = requests.get(recipeWeb)  
     if text == 'Hi':
         line_bot_api.reply_message(event.reply_token, 
         TextSendMessage(text='Hi, mate'))  
     else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text)) 
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(recipeWeb))
+        line_bot_api.reply_message(event.reply_token, 
+        TextSendMessage('https://icook.tw/recipes/search?q=' + text + '&ingredients=')) 
      
        
 import os
