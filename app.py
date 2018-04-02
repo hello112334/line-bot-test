@@ -12,6 +12,7 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage, ImageSendMessage
 )
 
+import random
 import requests
 from bs4 import BeautifulSoup   
 
