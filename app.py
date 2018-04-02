@@ -59,16 +59,11 @@ def handle_message(event):
         pattern = soup.find_all('p', 'comment-content')
         listA = []
         for item in pattern:
-            listA.append(item.string)
-            
-        for name in listA:
-            line_bot_api.reply_message(event.reply_token, 
-                                       TextSendMessage(name + '----------')) 
-            
-         
-        #extSendMessage('https://icook.tw/recipes/search?q=' + text + '&ingredients=')
+            listA.append((item.string) + '\n----------')        
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(listA)) 
+        #extSendMessage('https://icook.tw/recipes/search?q=' + text + '&ingredients=')    
     else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text + '\nhehe')) 
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text + '學你說話XD'))
         
 import os
 if __name__ == "__main__":
