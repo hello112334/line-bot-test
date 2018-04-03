@@ -156,35 +156,8 @@ def handle_message(event):
         TextSendMessage(text='Hi, mate'))  
         
     elif text == 'book':
-         buttons_template = TemplateSendMessage(
-            alt_text='開始玩 template',
-            template=ButtonsTemplate(
-                title='選擇服務',
-                text='請選擇',
-                thumbnail_image_url='https://i.imgur.com/xQF5dZT.jpg',
-                actions=[
-                    MessageTemplateAction(
-                        label='新聞',
-                        text='新聞'
-                    ),
-                    MessageTemplateAction(
-                        label='電影',
-                        text='電影'
-                    ),
-                    MessageTemplateAction(
-                        label='看廢文',
-                        text='看廢文'
-                    ),
-                    MessageTemplateAction(
-                        label='正妹',
-                        text='正妹'
-                    )
-                ]
-            )
-        )
-        line_bot_api.reply_message(event.reply_token, buttons_template)
-        return 0
-        #TextSendMessage('https://icook.tw/recipes/search?q=' + text + '&ingredients=')    
+        bookWeb = 'https://icook.tw/recipes/search?q={}&ingredients='.format('book')
+        line_bot_api.reply_message(event.reply_token, bookWeb)   
     
     else:
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text + '\n學你說話XD'))
