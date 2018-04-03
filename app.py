@@ -156,7 +156,7 @@ def handle_message(event):
         TextSendMessage(text='Hi, mate'))  
         
     elif text == 'book':
-        bookWeb = 'https://icook.tw/recipes/search?q={}&ingredients='.format('book')
+        bookWeb = 'https://icook.tw/recipes/search?q={}&ingredients='.format(text)
         line_bot_api.reply_message(event.reply_token, bookWeb)   
     
     else:
